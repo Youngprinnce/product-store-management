@@ -54,6 +54,9 @@ To Register as a user
 
 ## Authors
 
+FULL NAME: AJIBOYE ADEDOTUN
+EMAIL: ajiboyeadedotun16@gmail.com
+
 * **Ajiboye Adedotun** - *Product Store Mangement* - [Youngprinnce](https://github.com/youngprinnce)
 
 
