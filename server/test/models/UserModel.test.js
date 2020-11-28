@@ -33,7 +33,7 @@ describe('The mongoose schema', async () => {
     await user.save();
     const foundUser = await UserModel.findOne({ email: validUser.email }).exec();
     expect(foundUser.username).to.equal('frank');
-    UserModel.deleteOne({ _id: foundUser._id }).then((response => {
+    await UserModel.deleteOne({ _id: foundUser._id }).then((response => {
       expect(1).to.equal(1)
     }))
   });
@@ -44,7 +44,7 @@ describe('The mongoose schema', async () => {
     const foundUser = await UserModel.findOne({ email: validUser.email }).exec();
     expect(foundUser.password).to.exist;
     expect(foundUser.password).to.not.equal(validUser.password);
-    UserModel.deleteOne({_id:foundUser._id}).then((response => {
+    await UserModel.deleteOne({_id:foundUser._id}).then((response => {
       expect(1).to.equal(1)
     }))
   });
