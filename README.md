@@ -51,6 +51,16 @@ To Register as a user
 
 - Route to `http://localhost:3001/signup`
 
+## Note
+
+- Password should contain atleats one uppercase and one digit
+
+## Tests
+To run unit test, run the following codes in the server directory
+
+ - `npm test`   General routes
+ - `npm test test/db/connect.spec.js`  Database configurations
+ - `npm test test/models/UserModel.test.js` User Model test
 
 ## Authors
 
