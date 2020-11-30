@@ -1,10 +1,20 @@
 const UserModel = require("../../models/User");
 const mongoose = require('mongoose');
 const dsn = "mongodb://localhost:27017/veegil";
+
+
 const validUser = {
   username: 'Frank',
   email: '123@frank.com',
   password: 'Verysecret1',
+};
+
+const validProduct = {
+  name: 'Samsung Galaxy Pro',
+  slug:"Samsung-Galaxy-Pro",
+  price: 100,
+  description:"Good mobile with great reliabilty",
+  image: 'samsung.jpg',
 };
 
 
@@ -27,6 +37,7 @@ const db = async () => {
 
 module.exports = {
   validUser,
+  validProduct,
   // before,
   // after,
   db

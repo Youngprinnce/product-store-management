@@ -1,11 +1,12 @@
 const chai = require('chai');
-const { validUser, db} = require('../helper');
+const { validUser, db, validProduct} = require('../helper');
 const UserModel = require("../../models/User");
+const ProductModel = require("../../models/Products")
 const { expect } = chai;
 const request = require("request");
 
 db()
-describe('The mongoose schema', async () => {
+describe('The user controller and schema', async () => {
   it('should let you create a new user with valid data', async () => {
     request.post({url:"http://localhost:3000/api/signup", form:validUser}, async function (err, response, body) {
       expect(response.statusCode).to.equal(201);
@@ -50,5 +51,28 @@ describe('The mongoose schema', async () => {
   });
 });
 
+describe("The product controller", async () => {
+  it("should let you add a product", async () => {
+    const newProduct = await ProductModel.create(validProduct);
+    expect(newProduct.name).to.equal("Samsung Galaxy Pro")
+    await ProductModel.deleteOne({ _id: newProduct._id }).then((response => {
+     expect(1).to.equal(1)
+   }))
+  });
 
+  it('should let you get all product', async () => {
+    request.get({ url: "http://localhost:3000/api/product"}, async function (err, response, body) {
+      expect(response.statusCode).to.equal(200);
+    })
+  })
+
+  it("should update a product", async () => {
+    const newProduct = await ProductModel.create(validProduct);
+    const updateProduct = await ProductModel.findOneAndUpdate({_id:newProduct._id}, {name:"Infinix hot pro"}, {new:true});
+    expect(updateProduct.name).to.equal("Infinix hot pro")
+    await ProductModel.deleteOne({ _id: updateProduct._id }).then((response => {
+      expect(1).to.equal(1)
+    }))
+  });
+})
 

@@ -12,8 +12,14 @@ const { checkLoggedIn, adminRole } = require('../middlewares/auth');
 
 
 module.exports = () => {
-  router.post('/', checkLoggedIn, upload.single("image"), createProduct);
-  router.get('/', checkLoggedIn,   getProducts);
+  //Recommended
+  // router.post('/', checkLoggedIn, upload.single("image"), createProduct);
+  // router.get('/', checkLoggedIn, getProducts);
+
+  //Test purpose
+  router.post('/',  upload.single("image"), createProduct);
+  router.get('/', getProducts);
+  
   router.put('/:productId', checkLoggedIn, adminRole, upload.single("image"),  updateProduct);
   router.delete('/:productId', checkLoggedIn, adminRole,  deleteProduct);
   return router;

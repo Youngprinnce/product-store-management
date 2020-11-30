@@ -53,14 +53,14 @@ To Register as a user
 
 ## Note
 
-- Password should contain atleats one uppercase and one digit
+- Password should not be less than 8 digits and contain atleats one uppercase and one digit
 
 ## Tests
 To run unit test, run the following codes in the server directory
 
  - `npm test`   General routes
  - `npm test test/db/connect.spec.js`  Database configurations
- - `npm test test/models/UserModel.test.js` User Model test
+ - `npm test test/controllers/Controller.spec.js` Product and User Controller
 
 ## Authors
 
